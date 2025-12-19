@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A Question For You</title>
+
+<style>
+    body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ffdee9, #b5fffc);
+        overflow: hidden;
+    }
+
+    .box {
+        text-align: center;
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .temp {
+        position: relative;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 12px 30px;
+        margin: 10px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #4CAF50;
+        color: white;
+    }
+
+    #no {
+        background: #f44336;
+        color: white;
+        position: relative;
+    }
+
+    #no-slot {
+        width: 100px;   /* reserve space */
+        height: 45px;
+        position: relative;
+        }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>Will you hangout with me on 25/12</h1>
+    <div class="temp">
+        <div id="no-slot">
+                <button id="yes">Yes</button>
+        </div>
+        
+        <div id="no-slot">
+                <button id="no">No</button>
+        </div>
+        </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("no");
+
+    function moveButton() {
+        noBtn.style.position = "fixed";
+        const padding = 20;
+        const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+        const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+    }
+
+    // Move when mouse approaches
+    noBtn.addEventListener("mouseenter", moveButton);
+
+    // Yes button goes to invitation page
+    document.getElementById("yes").onclick = () => {
+        window.location.href = "invitation.html";
+    };
+</script>
+
+</body>
+</html>
